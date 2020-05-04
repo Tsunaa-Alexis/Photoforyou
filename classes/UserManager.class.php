@@ -39,6 +39,20 @@ class UserManager
 		}
 	}
 
+	public function getUserbyid($id)
+	{
+		$q= $this->_db->query('SELECT  Nom, Prenom, Mail, Mdp, Type, NumTel, Id , Credit FROM users WHERE Id = "'. $id .'"');
+		$userInfo = $q->fetch(PDO::FETCH_ASSOC);
+		if ($userInfo)
+		{
+			return new User($userInfo);
+		}	
+		else
+		{
+			return $userInfo;
+		}
+	}
+
 	public function edit(User $user)
 	{
 		$q = $this->_db->prepare("UPDATE users SET nom = :nom, prenom = :prenom, mail = :mail, numtel = :numtel WHERE id= :id");
@@ -100,6 +114,18 @@ class UserManager
 	      exit("Impossible de copier le fichier dans $content_dir");
 	    }
 	    header('Location: profil.php');
+	}
+
+	public function addCredit($val,$id) {
+		$q = $this->_db->prepare('UPDATE users SET credit = credit + '.$val.' WHERE id = '.$id);
+		$q->execute();
+	}
+
+	public function trade($idbuy,$idsell,$amount){
+		$q = $this->_db->prepare('UPDATE users SET credit = credit + '.$amount.' WHERE id = '.$idsell);
+		$q->execute();
+		$s = $this->_db->prepare('UPDATE users SET credit = credit - '.$amount.' WHERE id = '.$idbuy);
+		$s->execute();
 	}
 }
 ?>

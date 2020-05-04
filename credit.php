@@ -2,23 +2,11 @@
 <html>
 <head>
     <title>PhotoForYou</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Liaison au fichier css de Bootstrap -->
-    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://kit.fontawesome.com/768b55194c.js" crossorigin="anonymous"></script>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <?php
+    include ("include/entete.inc.php");
+    ?>
 </head>
 <body>
-
-
-  <?php
-    include ("include/entete.inc.php");
-  ?>
   <div class="container text-center">
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Abonnement</h1>
@@ -79,7 +67,7 @@
           <ul class="list-unstyled mt-3 mb-4">
             <li>1 Crédit</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</button>
+          <a href="payementcredit.php?credit=1" type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</a>
         </div>
       </div>
       <div class="card mb-4 box-shadow">
@@ -91,7 +79,7 @@
           <ul class="list-unstyled mt-3 mb-4">
             <li>5 crédits</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</button>
+          <a href="payementcredit.php?credit=2" type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</a>
         </div>
       </div>
       <div class="card mb-4 box-shadow">
@@ -103,7 +91,7 @@
           <ul class="list-unstyled mt-3 mb-4">
             <li>10 crédits</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</button>
+          <a href="payementcredit.php?credit=3" type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</a>
         </div>
       </div>
     </div>
@@ -117,7 +105,7 @@
           <ul class="list-unstyled mt-3 mb-4">
             <li>25 crédits</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</button>
+          <a href="payementcredit.php?credit=4" type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</a>
         </div>
       </div>
       <div class="card mb-4 box-shadow">
@@ -130,7 +118,7 @@
             <li>50 crédits</li>
             <li>1 mois de formule découverte offert</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</button>
+          <a href="payementcredit.php?credit=5" type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</a>
         </div>
       </div>
       <div class="card mb-4 box-shadow">
@@ -143,7 +131,7 @@
             <li>100 crédits</li>
             <li>1 mois de formule pro offert</li>
           </ul>
-          <button type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</button>
+          <a href="payementcredit.php?credit=6" type="button" class="btn btn-lg btn-block btn-outline-primary">Acheter</a>
         </div>
       </div>
     </div>

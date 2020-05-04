@@ -2,17 +2,11 @@
 <html>
 <head>
 	<title>PhotoForYou</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Liaison au fichier css de Bootstrap -->
-	<link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
+	<?php
+  include ("include/entete.inc.php");
+  ?>
 </head>
 <body>
-
-
-  <?php
-	include ("include/entete.inc.php")
-  ?>
 	<div class="container">
     	<div class="jumbotron">
       		<h1 class="display-4">Page des utilisateurs de PhotoForYou</h1>

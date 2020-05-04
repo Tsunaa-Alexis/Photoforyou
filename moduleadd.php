@@ -1,5 +1,4 @@
 <?php
-include ("include/entete.inc.php");
 
 if (isset($_POST['identifier']))
 {
@@ -39,10 +38,9 @@ if (isset($_POST['identifier']))
 <html>
 <head>
 	<title>PhotoForYou : connexion</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Liaison au fichier css de Bootstrap -->
-	<link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
+	<?php
+  include ("include/entete.inc.php");
+  ?>
 </head>
 <body>
 	<div class="container">

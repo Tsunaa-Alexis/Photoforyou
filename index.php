@@ -2,10 +2,9 @@
 <html>
 <head>
 	<title>PhotoForYou</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Liaison au fichier css de Bootstrap -->
-	<link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
+	<?php
+  	include ("include/entete.inc.php");
+  	?>
 	<style>
 		.carousel-item
 		{
@@ -17,17 +16,13 @@
 	</style>
 </head>
 <body>
-  <?php
-    include ("include/entete.inc.php");
-  ?>
-
 	<div class="container text-center">
 
 		<div class="py-5 text-center">
       <img class="d-block mx-auto mb-2" src="images/logo.png" alt="logo photoforyou" width="170" height="115">
     	<h1 class="display-5">PhotoForYou</h1>
       <p class="lead">Des pros au service des professionnels de la communication.</p>
-    </div>
+    	</div>
 		<!-- Carrousel -->
 		<div id="row carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  		<div class="carousel-inner">

@@ -1,5 +1,4 @@
 <?php
-include ("include/entete.inc.php");
 if (isset($_POST['valider']))
 {
   $user = new User(['Nom' => $_POST['nom'], 'Prenom' => $_POST['prenom'], 'Mail' => $_POST['mail'], 'Mdp' => $_POST['motdepasse1'],  'Type' => $_POST['choixType'], 'NumTel' => $_POST['numtel']]); 
@@ -13,10 +12,9 @@ if (isset($_POST['valider']))
 <html>
 <head>
 	<title>PhotoForYou</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Liaison au fichier css de Bootstrap -->
-	<link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
+	<?php
+  include ("include/entete.inc.php");
+  ?>
 </head>
 <body>  
 	<div class="container">

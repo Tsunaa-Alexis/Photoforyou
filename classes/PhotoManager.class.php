@@ -80,5 +80,31 @@ class PhotoManager
 	      exit("Impossible de copier le fichier dans $content_dir");
 	    }
 	}
+
+	public function getcart ($id) {
+		$q= $this->_db->query('SELECT  Id_photo,Nom_photo,Taille_pixels_x,Taille_pixels_y,Poids,URL_photo,Id_user,description,prix FROM photos WHERE id_photo = '.$id);
+
+		$photoInfo = $q->fetch(PDO::FETCH_ASSOC);
+		if ($photoInfo)
+		{
+			return new Photo($photoInfo);
+		}	
+		else
+		{
+			return $photoInfo;
+		}
+	}
+
+	public function sellphoto($idp,$idu,$amount) {
+		$q = $this->_db->prepare('UPDATE photos SET vendu = '.$idu.' WHERE id_photo = '.$idp);
+		$q->execute();
+		$data = [
+                'id' => $idp,
+                'idu' => $idu,
+                'prix' => $amount,
+            ];
+		$s = $this->_db->prepare('INSERT INTO photobuy(id_photo,id_user,prix) VALUES (:id, :idu, :prix)');
+		$s->execute($data);
+	}
 }
 ?>
