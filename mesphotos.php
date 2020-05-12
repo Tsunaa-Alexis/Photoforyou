@@ -26,7 +26,9 @@
 }
   if ($_SESSION['Type'] == 'Photographe') {
     echo '<div class="edits">
-      <a href="#">Ajouter une photo <i class="fas fa-images"></i><span class="glyphicon glyphicon-send"></span></a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Ajouter une photo <i class="fas fa-images"></i><span class="glyphicon glyphicon-send"></span>
+            </button>
     </div>';
    
   }
@@ -38,123 +40,58 @@
    
   }
 ?>
-    <div class="profilcard" style="display: flex; flex-flow: wrap; padding-top: 50px;">
-  
+<container>
     <?php 
       $pmanager->getPhotoUser($_SESSION['Id'],$_SESSION['Type']);             
     ?>
-  </div> 
+</container>
 
   <?php
   if($_SESSION['Type'] == 'Photographe') {
   ?>
-  <div class="changed changed-off">
-    <h4> NOUVELLE PHOTO </h4>
-    <div class="closed"><img src="https://raw.githubusercontent.com/asmfadholi/urbanhireproject/master/icon/signout.png"></div>
-      <form method="post" class="tab" id='form' enctype="multipart/form-data">      
-        <td><input class="change" name='id' type="hidden" value="<?php echo $_SESSION['Id'];?>"/></td>
-        <tr>
-          <br  /><td class="space">Titre</td>
-          <td><input class="change" name='titre' ></td>  
-        </tr>
-        <tr>
-          <br  /><td class="space">Descriptif(200 caractères) : </td><br />
-          <td><textarea class="change" name='descriptif'></textarea></td> 
-        </tr>
-        <tr>
-          <br  /><td class="space">Prix</td>
-          <td><input class="change" name='prix' ></td>  
-        </tr>
-        <tr>
-          <br  /><td class="space">Photo : </td><br>
-          <td><input type="file" name="photo"><br  /></td>  
-        </tr>
-          
-        <input type="submit" value="Save" class="saved" name="valider" />
-      </form>
-    </div>  
-  </div> 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">NOUVELLE PHOTO</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="post" class="tab" id='form' enctype="multipart/form-data">  
+          <div class="modal-body">   
+            <td><input class="change" name='id' type="hidden" value="<?php echo $_SESSION['Id'];?>"/></td>
+            <tr>
+              <br  /><td class="space">Titre</td>
+              <td><input class="change" name='titre' ></td>  
+            </tr>
+            <tr>
+              <br  /><td class="space">Descriptif(200 caractères) : </td><br />
+              <td><textarea class="change" name='descriptif'></textarea></td> 
+            </tr>
+            <tr>
+              <br  /><td class="space">Prix</td>
+              <td><input class="change" name='prix' ></td>  
+            </tr>
+            <tr>
+              <br  /><td class="space">Photo : </td><br>
+              <td><input type="file" name="photo"><br  /></td>  
+            </tr>
+                
+                 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" value="Save" class="btn btn-primary" name="valider" /> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <?php
   }
   ?>    
 </div>  
-
-<!-- Script changement profil -->
-  <script>$(document).ready(function(){
-  $(".icon").click(function(){
-    $(".icon").toggleClass('active');
-    $('body').toggleClass("over");
-    $('.on').toggleClass('off');
-    $('.sidebar').toggleClass('active');    
-  });
-  $(".on").click(function(){
-    $(".icon").toggleClass('active');
-    $('body').toggleClass("over");
-    $('.on').toggleClass('off');
-    $('.sidebar').toggleClass('active');
-  });
-  $(".notif").click(function(){
-    $(".circle").toggleClass("circle-off");
-  });
-  $(window).on('scroll', function(){
-    if ($(window).scrollTop()){
-      $("nav").slideUp();
-    } else {
-      $("nav").slideDown();
-    }
-  });
-  $(".search2").click(function(){
-    $(".find").toggleClass("find-off");
-  });
-  
-  
-  $(".edits, .closed, .saved").click(function(){
-    $(".changed").toggleClass("changed-off");
-    $('.on-1').toggleClass('off-1');
-    $('body').toggleClass("over");
-  });
-  
-  $('.datas').each(function(index){
-  var simpan = $(this).html();    
-  $(".change").eq(index).val(simpan);   
-});
-
-$(".saved").click(function(){
-  $('.change').each(function(index){
-    var searchData = $(this).eq(0).val();
-    $(".datas").eq(index).html(searchData);
-    var dat = $(".datas").eq(5).html();
-  var tag = $(".datas").eq(1).html(); 
-    $(".ubah").html(dat);
-  $(".nametag").html(tag);
-  });  
-});
-  $(".change").keypress(function(e){
-    
-    if(e.which == 13){      
-      $(".saved").click();
-    };
-  });
-})
-
-
-
-(function() {
-    "use strict"
-    window.addEventListener("load", function() {
-      var form = document.getElementById("form")
-      form.addEventListener("submit", function(event) {
-        if (form.checkValidity() == false) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add("was-validated")
-      }, false)
-    }, false)
-  }())
-  </script>   
-
-
 	
   <?php
   include ("include/piedDePage.inc.php");

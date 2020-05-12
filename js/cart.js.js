@@ -83,7 +83,7 @@ function getnbCart() {
             cart = []
         }
     }
-    
+
     texte.innerHTML = cart.length;  
 }
 
@@ -144,4 +144,10 @@ function AddListenDelToCart() {
 AddListenAddToCart()
 AddListenDelToCart()
 getnbCart()
+
+
+
+
+
+
 

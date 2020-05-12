@@ -108,12 +108,15 @@
 
 
 .edit img{
-  width: 18px;
+  width: 20px;
 }
 
 .edit {
-  font-size: 2em;
+  font-size: 20px;
+  border:0;
+  background:transparent;
 }
+
 
 .edits {
   margin-top: 50px !important;

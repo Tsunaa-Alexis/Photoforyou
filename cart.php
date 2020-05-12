@@ -1,8 +1,6 @@
 <?php
 if (isset($_POST['buy'])) {
-  $val = [];
 setcookie("CART", "[]",0,"/");
-echo $_COOKIE["CART"];
 header('Location: cart.php');
 }
 ?>

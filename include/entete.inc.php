@@ -37,22 +37,17 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html">Photos</a>
-  						<div class="dropdown-menu">
+            <li class="nav-item">
   						  <?php
   						    if (isset($_SESSION['login']) ) {
                 		if ( $_SESSION['Type'] == 'Photographe') {
-                			echo '<a class="dropdown-item" href="#">Vendre</a>';
+                			echo '<a class="nav-link" href="#">Vendre</a>';
                 		}
                 		elseif ( $_SESSION['Type'] == 'Client') {
-                			echo '<a class="dropdown-item" href="allPhoto.php">Toutes les Photos</a>';
+                			echo '<a class="nav-link" href="allPhoto.php">Toutes les Photos</a>';
                 		}
                   }
               	?>		
-  							<a class="dropdown-item" href="#">Les plus populaires</a>
-  							<a class="dropdown-item" href="#">Les nouveautés</a>
-  						</div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="credit.php">Crédits</a>
@@ -91,7 +86,7 @@
                 						echo '
                       						<a class="dropdown-item" href="profil.php">Mon Profil</a>
                       						<a class="dropdown-item" href="mesphotos.php">Mes Photos</a>
-                      						<a class="dropdown-item" href="#">Historique des factures</a>';
+                      						<a class="dropdown-item" href="historique.php">Historique des factures</a>';
                 					} 
                 		    echo'
   						          </div>

@@ -88,9 +88,9 @@
       <div class="col-md-8">
         <div class="tab-content profile-tab" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" >
-          	<div class="edit">
-      			<a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/768px-Edit_icon_%28the_Noun_Project_30184%29.svg.png"></a>
-    		</div>
+            <button type="button" class="btn edit btn-primary" data-toggle="modal" data-target="#exampleModal">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/768px-Edit_icon_%28the_Noun_Project_30184%29.svg.png">
+            </button>
             <div class="row">
               <div class="col-md-6">
                 <label>Nom</label>
@@ -167,6 +167,47 @@
       </div>
     </div>          
   </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Profil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="post" class="tab" id='form'>
+          <div class="modal-body">              
+                <td><input class="change" name='id' type="hidden" value="<?php echo $_SESSION['Id'];?>"/></td>
+                <tr>
+                  <br  /><td class="space">Prénom</td>
+                  <td><input class="change" name='prenom' value="<?php echo $_SESSION['PrenomUtilisateur'];?>"></td>  
+                </tr>
+                <tr>
+                  <br  /><td class="space">Nom</td>
+                  <td><input class="change" name='nom' value="<?php echo $_SESSION['NomUtilisateur'];?>"></td> 
+                </tr>
+                <tr>
+                  <br  /><td class="space">Email</td>
+                  <td><input class="change" name='mail' value="<?php echo $_SESSION['Mail'];?>"></td> 
+                </tr>
+                <tr>
+                  <br  /><td class="space">Phone</td>
+                  <td><input class="change" name='numtel' value="<?php echo $_SESSION['NumTel'];?>"></td>
+                </tr>
+                  
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" value="Save" class="btn btn-primary" name="valider"/>  
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
         
   <div class="changed changed-off">
     <h4> PROFIL </h4>
@@ -195,80 +236,7 @@
   </div>     
 </div>  
 
-<!-- Script changement profil -->
-  <script>$(document).ready(function(){
-  $(".icon").click(function(){
-    $(".icon").toggleClass('active');
-    $('body').toggleClass("over");
-    $('.on').toggleClass('off');
-    $('.sidebar').toggleClass('active');    
-  });
-  $(".on").click(function(){
-    $(".icon").toggleClass('active');
-    $('body').toggleClass("over");
-    $('.on').toggleClass('off');
-    $('.sidebar').toggleClass('active');
-  });
-  $(".notif").click(function(){
-    $(".circle").toggleClass("circle-off");
-  });
-  $(window).on('scroll', function(){
-    if ($(window).scrollTop()){
-      $("nav").slideUp();
-    } else {
-      $("nav").slideDown();
-    }
-  });
-  $(".search2").click(function(){
-    $(".find").toggleClass("find-off");
-  });
-  
-  
-  $(".edit, .closed, .saved").click(function(){
-    $(".changed").toggleClass("changed-off");
-    $('.on-1').toggleClass('off-1');
-    $('body').toggleClass("over");
-  });
-  
-  $('.datas').each(function(index){
-  var simpan = $(this).html();    
-  $(".change").eq(index).val(simpan);   
-});
 
-$(".saved").click(function(){
-  $('.change').each(function(index){
-    var searchData = $(this).eq(0).val();
-    $(".datas").eq(index).html(searchData);
-    var dat = $(".datas").eq(5).html();
-	var tag = $(".datas").eq(1).html(); 
-    $(".ubah").html(dat);
-	$(".nametag").html(tag);
-  });  
-});
-  $(".change").keypress(function(e){
-    
-    if(e.which == 13){      
-      $(".saved").click();
-    };
-  });
-})
-
-
-
-(function() {
-    "use strict"
-    window.addEventListener("load", function() {
-      var form = document.getElementById("form")
-      form.addEventListener("submit", function(event) {
-        if (form.checkValidity() == false) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add("was-validated")
-      }, false)
-    }, false)
-  }())
-  </script>
 
   <script type="text/javascript">
         function less1() {

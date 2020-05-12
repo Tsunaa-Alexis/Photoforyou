@@ -14,7 +14,7 @@ class PhotoManager
 	}
 
 
-	public function getPhotoUser($iduser,$type)
+	/*public function getPhotoUser($iduser,$type)
 	{
 		if ($type == 'Photographe') {
 			$q= $this->_db->query('SELECT  Id_photo,Nom_photo,Taille_pixels_x,Taille_pixels_y,Poids,URL_photo,Id_user,description FROM photos WHERE Id_user = "'. $iduser .'"');
@@ -43,7 +43,55 @@ class PhotoManager
 				  </div>';
 			$i ++;
 		}
+	}*/
+
+
+	public function getPhotoUser($iduser,$type)
+	{
+		if ($type == 'Photographe') {
+			$q= $this->_db->query('SELECT  Id_photo,Nom_photo,Taille_pixels_x,Taille_pixels_y,Poids,URL_photo,Id_user,description FROM photos WHERE Id_user = "'. $iduser .'"');
+			$d= $this->_db->query('SELECT  Id_photo,Nom_photo,Taille_pixels_x,Taille_pixels_y,Poids,URL_photo,Id_user,description FROM photos WHERE Id_user = "'. $iduser .'"');
+		}
+
+		elseif ($type == 'Client') {
+			$q= $this->_db->query('SELECT  Id_photo,Nom_photo,Taille_pixels_x,Taille_pixels_y,Poids,URL_photo,Id_user,description FROM photos WHERE Vendu = "'. $iduser .'"');
+			$d= $this->_db->query('SELECT  Id_photo,Nom_photo,Taille_pixels_x,Taille_pixels_y,Poids,URL_photo,Id_user,description FROM photos WHERE Vendu = "'. $iduser .'"');
+		}
+		
+		$i = 0;
+		$a = 0;
+		echo '<div class="row row-cols-1 row-cols-md-3">';
+        foreach  ($q as $row) {
+            echo '
+                    <div class="col mb-4" id='.$row["Id_photo"].'>
+                        <div class="card h-100">
+                            <a href="#"><img src="'.$row["URL_photo"].'" class="card-img-top"></a>
+                            <div class="card-body">
+        	                    <h3 class="card-title">'.$row["Nom_photo"].'</h3>
+                                <h5>Description :</h5>
+                                <p class="card-text">'.$row["description"].'</p>
+                            </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg'.$i.'">Regarder</button>
+            	        </div>
+                    </div>
+                    ';
+					$i ++;
+
+        }
+        echo '</div>';
+        foreach  ($d as $row) {
+        echo'	<div class="modal fade bd-example-modal-lg'.$a.'" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg'.$a.'">
+						<div class="modal-content">
+						    <img src="'.$row["URL_photo"].'" height="100%" width="100%"/>
+						</div>
+					</div>
+				</div>';
+				$a ++;
+        }
+        
 	}
+
 
 	public function addPhoto(Photo $photo)
 	{
