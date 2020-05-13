@@ -79,3 +79,6 @@ Le photographe fixe le prix de vente en nombre de crédit. (minimum 2 crédits-m
 - Gestion du catalogue
 
 
+
+
+

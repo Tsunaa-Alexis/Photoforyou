@@ -13,7 +13,7 @@ class CreditManager
 		$this->_db = $db;
 	}
 
-
+	// function pour récupérer les information d'une offre par rapport à son id
 	public function getCredit($id)
 	{
 

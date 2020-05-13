@@ -1,4 +1,7 @@
 <?php
+// réinitialisation du coockie en vide lors de l'achat
+// des photos, le code setcoockie doit obligatoirement ce trouver
+// au tout début du code
 if (isset($_POST['buy'])) {
 setcookie("CART", "[]",0,"/");
 header('Location: cart.php');
@@ -15,9 +18,11 @@ header('Location: cart.php');
 </header>
 <body class="bg-light">
 <?php
-
+    // on récupère les informations du coockie en le décodans pour une utilisation en php
     $cart = json_decode($_COOKIE["CART"]);
     $totpanier = 0;
+    // on parcourt tous les éléments du panier et on incrémente à chaque fois 
+    // pour connaitre le nombre d'élément total
     foreach  ($cart as $elem) {
       $totpanier ++;
     }
@@ -106,7 +111,6 @@ header('Location: cart.php');
               ';
               $total += $photo->getPrix();
             }
-
 
             if (isset($_POST['buy'])) {
               if ($_SESSION['Credit'] >= $total) {

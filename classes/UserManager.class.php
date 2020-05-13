@@ -8,6 +8,7 @@ class UserManager
 		$this->setDB($db);
 	}
 
+	// ajouter un user
 	public function add(User $user)
 	{
 		$q = $this->_db->prepare('INSERT INTO users(nom,prenom,type,mail,mdp,numtel) VALUES(:nom, :prenom, :type, :mail, :mdp, :numtel)');
@@ -25,6 +26,7 @@ class UserManager
 			'Credit' => 0]);
 	}
 
+	// récupérer les informations en fonction de l'email
 	public function getUser($sonMail)
 	{
 		$q= $this->_db->query('SELECT  Nom, Prenom, Mail, Mdp, Type, NumTel, Id , Credit FROM users WHERE Mail = "'. $sonMail .'"');
@@ -39,6 +41,7 @@ class UserManager
 		}
 	}
 
+	// récupérer les informations d'un utilisateurs à partir de sont id
 	public function getUserbyid($id)
 	{
 		$q= $this->_db->query('SELECT  Nom, Prenom, Mail, Mdp, Type, NumTel, Id , Credit FROM users WHERE Id = "'. $id .'"');
@@ -53,6 +56,7 @@ class UserManager
 		}
 	}
 
+	// modifier les information d'un user
 	public function edit(User $user)
 	{
 		$q = $this->_db->prepare("UPDATE users SET nom = :nom, prenom = :prenom, mail = :mail, numtel = :numtel WHERE id= :id");
@@ -67,11 +71,13 @@ class UserManager
 		$q->execute();
 	}
 
+	// compter le nombre d'utilisateurs
 	public function count()
 	{
 		return $this->_db->query("SELECT COUNT(*) FROM users")->fetchColumn();
 	}
 
+	// vérifier qu'un utilisateur éxiste
 	public function exists($mailUser, $mdpUser)
 	{
 		$q= $this->_db->prepare('SELECT COUNT(*) FROM users WHERE mail = :mail AND mdp = :mdp');
@@ -79,11 +85,13 @@ class UserManager
 		return (bool) $q->fetchColumn();
 	}
 
+	// initialisation de la db
 	public function setDb(PDO $db)
 	{
 		$this->_db = $db;
 	}
 
+	// crée un code aléatoire
 	public function randomcode() {
 		$input = array("0","1","2","3","4","5","6","7","8","9");
 		$code = 0;
@@ -98,6 +106,7 @@ class UserManager
  		return $code;
 	}
 
+	// modification de l'image de profile
 	public function imgprofile($content_dir,$tmp_file,$type_file,$name_file) {
 	    if( !is_uploaded_file($tmp_file) )
 	    {
@@ -116,11 +125,13 @@ class UserManager
 	    header('Location: profil.php');
 	}
 
+	// ajout de crédit
 	public function addCredit($val,$id) {
 		$q = $this->_db->prepare('UPDATE users SET credit = credit + '.$val.' WHERE id = '.$id);
 		$q->execute();
 	}
 
+	//échange de crédits d'un utilisateur à un autre
 	public function trade($idbuy,$idsell,$amount){
 		$q = $this->_db->prepare('UPDATE users SET credit = credit + '.$amount.' WHERE id = '.$idsell);
 		$q->execute();

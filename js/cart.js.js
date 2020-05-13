@@ -7,6 +7,8 @@ struct cart:
     }
 ]
  */
+
+// function pour crée un coockie avec une durée 
 // From: https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
 function setCookie(name,value,days) {
     let expires = '';
@@ -17,6 +19,8 @@ function setCookie(name,value,days) {
     }
     document.cookie = name + '=' + (value || '')  + expires + '; path=/';
 }
+
+//function pour récupérer un coockie
 function getCookie(name) {
     let nameEQ = name + '=';
     let ca = document.cookie.split(';');
@@ -27,6 +31,7 @@ function getCookie(name) {
     }
     return null;
 }
+
 
 function addToCart(e) {
     // get photoId
@@ -68,12 +73,13 @@ function addToCart(e) {
 }
 
 function getnbCart() {
-
+    // on récupère le text pour l'élément avec l'id 'notif'
     let texte = document.getElementById("notif");
 
+    // récupère les infos du coockie
     let cart = getCookie('CART')
 
-    // Parse or init the cart
+    // on vérifie si le coockie éxiste, sinon on le crée
     if (!cart) {
         cart = [];
     } else {
@@ -84,11 +90,13 @@ function getnbCart() {
         }
     }
 
+    // on remplace le texte par la nombre d'éléments dans le panier
     texte.innerHTML = cart.length;  
 }
 
+// supprimé un éléments précis dans le panier
 function delCart(a) {
-
+    //récupère l'id 
     const place = a.target.attributes.getNamedItem('placeid').nodeValue;
 
     
@@ -107,6 +115,8 @@ function delCart(a) {
 
     index = 0;
     find = false;
+    // on parcourt tous les id du panier jusqu'à ce que l'id récupéré plus au 
+    // est égal à un id du panier, une fois égale on initialise find  à true et on sort des boucles
     for (item of cart) {
         if (item.id == place) {
             find = true;
@@ -115,6 +125,7 @@ function delCart(a) {
         index++;
     }
 
+    //si find = true on enlève l'éléments voulu puis on modifie le coockie
     if (find) {
         cart.splice(index,1)
         setCookie('CART', JSON.stringify(cart))

@@ -1,4 +1,5 @@
 <?php
+    // affiche les photo avec une pagination automatique, pareil pour les 2 autres fonctions
     function displayAllPhotos($db) {
         
         $a = $db->query('SELECT count(*) as total FROM photos WHERE vendu = 0');
