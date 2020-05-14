@@ -69,10 +69,10 @@
         <p class="proile-rating">RANKINGS : <span>8/10</span></p>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="home-tab" onclick="on()" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+            <a class="nav-link active" id="home-tab" onclick="on()" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">A propos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="profile-tab" onclick="diss()" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+            <a class="nav-link" id="profile-tab" onclick="diss()" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Mes photos</a>
           </li>
         </ul>
       </div>

@@ -1,40 +1,3 @@
-<?php
-
-if (isset($_POST['identifier']))
-{
-  if ($manager->getUser($_POST['mail']))
-  {
-  	$utilisateur = $manager->getUser($_POST['mail']);
-    if ($utilisateur->getMdp() == $_POST['motdepasse'])
-    {
-      session_start ();
-      $_SESSION['login'] = true;
-      $_SESSION['NomUtilisateur'] = $utilisateur->getNom();
-      $_SESSION['PrenomUtilisateur'] = $utilisateur->getPrenom();
-      $_SESSION['Type'] = $utilisateur->getType();
-      $_SESSION['Mail'] = $utilisateur->getMail();
-      $_SESSION['NumTel'] = $utilisateur->getNumTel();
-      $_SESSION['Id'] = $utilisateur->getId();
-      $_SESSION['Credit'] = $utilisateur->getCredit();
-
-      header('Location: membres.php');
-    }
-    else
-    {
-      header('Location: index.php');
-      echo "<p>Il existe pas</p>";
-    }
-  }
-  else
-  {
-    echo '<div class="jumbotron">
-      <p class="lead">Ce mail n\'est pas présent dans la base !</p>
-    </div>';
-  }  
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +7,42 @@ if (isset($_POST['identifier']))
   ?>
 </head>
 <body>
+  <?php
+
+  if (isset($_POST['identifier']))
+  {
+    if ($manager->getUser($_POST['mail']))
+    {
+      $utilisateur = $manager->getUser($_POST['mail']);
+      if ($utilisateur->getMdp() == $_POST['motdepasse'])
+      {
+        session_start ();
+        $_SESSION['login'] = true;
+        $_SESSION['NomUtilisateur'] = $utilisateur->getNom();
+        $_SESSION['PrenomUtilisateur'] = $utilisateur->getPrenom();
+        $_SESSION['Type'] = $utilisateur->getType();
+        $_SESSION['Mail'] = $utilisateur->getMail();
+        $_SESSION['NumTel'] = $utilisateur->getNumTel();
+        $_SESSION['Id'] = $utilisateur->getId();
+        $_SESSION['Credit'] = $utilisateur->getCredit();
+
+        header('Location: membres.php');
+      }
+      else
+      {
+        header('Location: index.php');
+        echo "<p>Il existe pas</p>";
+      }
+    }
+    else
+    {
+      echo '<div class="jumbotron">
+        <p class="lead">Ce mail n\'est pas présent dans la base !</p>
+      </div>';
+    }  
+  }
+
+  ?>
 	<div class="container">
     <div class="jumbotron">
       <h1 class="display-4">Connexion</h1>
